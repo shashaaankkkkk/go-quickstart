@@ -34,5 +34,5 @@ func main(){
 	router.PATCH("/somepatch",patching)
 	router.HEAD("/somehead",head)
 	router.OPTIONS("/someoptions",options)
-	router.Run(":3030")
+	router.Run(":8080")
 }
