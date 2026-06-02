@@ -1,6 +1,16 @@
 package main
-import "fmt"
+import (
+	"net/http"
+	"github.com/gin-gonic/gin"
+)
 func main(){
-	fmt.Println("hello world!")
-
+	router:=gin.Default()
+	router.GET("/hello",func(c *gin.Context){
+		c.String(http.StatusOK,"hello")
+	})
+	router.POST("/users",func(c *gin.Context){
+		name:=c.PostForm("name")
+		c.JSON(http.StatusCreated,gin.H{"user":name})
+	})
+	router.Run()
 }
