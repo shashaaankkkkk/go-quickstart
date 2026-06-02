@@ -9,5 +9,13 @@ func main(){
 		name:=c.Param("name")
 		c.String(http.StatusOK,"hello %s",name)
 	})
+
+	router.GET("/user/:name/*action",func(c *gin.Context){
+		name:=c.Param("name")
+		action:=c.Param("action")
+		c.String(http.StatusOK,"heelo %s is %s",name,action)
+	})
+
+
 	router.Run()
 }
