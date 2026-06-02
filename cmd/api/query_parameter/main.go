@@ -1,5 +1,15 @@
 package main
-import "fmt"
+import (
+	"net/http"
+	"github.com/gin-gonic/gin"
+)
 func main(){
-	fmt.Println("hello")
+	router:=gin.Default()
+	router.GET("/welcome",func (c *gin.Context){
+		firstname:=c.DefaultQuery("firstname","Guest")
+		lastname:=c.Query("lastname")
+		c.String(http.StatusOK,"Hello %s %s",firstname,lastname)
+	})
+	router.Run()
 }
+
